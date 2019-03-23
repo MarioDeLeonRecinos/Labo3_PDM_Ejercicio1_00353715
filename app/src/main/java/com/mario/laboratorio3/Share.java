@@ -3,7 +3,6 @@ package com.mario.laboratorio3;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -27,13 +26,14 @@ public class Share extends AppCompatActivity {
         email = findViewById(R.id.tv_email);
         gender = findViewById(R.id.tv_gender);
 
-        Bundle extras = getIntent().getExtras();
+        Intent mIntent = this.getIntent();
 
-        name.setText( extras.getString("name") );
-        pass.setText( extras.getString("password") );
-        email.setText( extras.getString("email") );
-        gender.setText( extras.getString("gender") );
-
+        if (mIntent!=null) {
+            name.setText(mIntent.getStringExtra(Login.NAME_KEY));
+            pass.setText(mIntent.getStringExtra(Login.PASSWORD_KEY));
+            email.setText(mIntent.getStringExtra(Login.EMAIL_KEY));
+            gender.setText(mIntent.getStringExtra(Login.GENDER_KEY));
+        }
 
         btt_Share.setOnClickListener(v -> {
             Intent Send_Intent = new Intent();

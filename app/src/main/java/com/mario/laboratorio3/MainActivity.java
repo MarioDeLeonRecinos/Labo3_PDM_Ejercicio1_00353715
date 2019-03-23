@@ -29,11 +29,11 @@ public class MainActivity extends AppCompatActivity {
 
         butt_Send.setOnClickListener(v->{
             Intent mIntent = new Intent(MainActivity.this,Share.class);
-            //No lo pude hacer funcionar con la clase Login que habia creado se sobrescribian los extra y solo mandaba uno
-            mIntent.putExtra("name",name.getText().toString());
-            mIntent.putExtra("password", pass.getText().toString());
-            mIntent.putExtra("email", email.getText().toString());
-            mIntent.putExtra("gender", gender.getText().toString());
+
+            mIntent.putExtra(Login.NAME_KEY,name.getText().toString());
+            mIntent.putExtra(Login.PASSWORD_KEY, pass.getText().toString());
+            mIntent.putExtra(Login.EMAIL_KEY, email.getText().toString());
+            mIntent.putExtra(Login.GENDER_KEY, gender.getText().toString());
 
             startActivity(mIntent);
         });
